@@ -1,0 +1,610 @@
+{
+	"quizzes" :
+	[
+		{
+			"name"	: "Portraits",
+			"group"	: "Beginner",
+			"subdirectory" : "jigsaw-portraits",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait1.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait2.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait3.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait4.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait5.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait6.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait7.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait8.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "portrait9.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				}
+			]
+		},
+
+		
+		{
+			"name"	: "Sports",
+			"group"	: "Beginner",
+			"subdirectory" : "jigsaw-sports",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports1.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports2.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports3.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports4.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports5.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports6.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports7.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports8.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports9.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports10.jpg",
+					"gridX"			: 3,
+					"gridY"			: 4
+				}
+			]
+		},
+		
+				
+		{
+			"name"	: "Sports small tiles",
+			"group"	: "Beginner",
+			"subdirectory" : "jigsaw-sports",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports1.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports2.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports3.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports4.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports5.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports6.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports7.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports8.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports9.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "sports10.jpg",
+					"gridX"			: 5,
+					"gridY"			: 6
+				}
+			]
+		},
+		{
+			"name"	: "Jigsaw quiz",
+			"group"	: "Intermediate",
+			"subdirectory" : "jigsaw",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image1.JPG",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image2.JPG",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image3.JPG",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image4.JPG",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image5.JPG",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image6.JPG",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image7.JPG",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image8.JPG",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image9.JPG",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "image10.JPG",
+					"gridX"			: 3,
+					"gridY"			: 3
+				}
+			]
+		},
+		
+		{
+			"name"	: "Jigsaw quiz 2",
+			"group"	: "Intermediate",
+			"subdirectory" : "jigsaw2",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "bus.JPG",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "cat.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "eiffeltower.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "football.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "horse.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "house.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "meerkat.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "tugboat.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				}
+			]
+		},
+		
+		{
+			"name"	: "Jigsaw quiz 3",
+			"group"	: "Intermediate",
+			"subdirectory" : "jigsaw3",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "balloon.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "cake.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "dogs.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "elephant.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "fountain.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "painting.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "saladwoman.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				}
+			]
+		},
+
+		{
+			"name"	: "Women eating salad and laughing",
+			"group"	: "Advanced",
+			"subdirectory" : "jigsaw-salad",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad1.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad2.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad3.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad4.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad5.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad6.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad7.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad8.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad9.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "salad10.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				}
+			]
+		},
+
+
+		{
+			"name"	: "Piggies",
+			"group"	: "Advanced",
+			"subdirectory" : "jigsaw-piggies",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig1.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig2.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig3.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig4.jpg",
+					"gridX"			: 2,
+					"gridY"			: 2
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig5.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig6.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig7.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				}
+			]
+		},
+
+
+		{
+			"name"	: "Piggies 2",
+			"group"	: "Advanced",
+			"subdirectory" : "jigsaw-piggies",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig1.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig2.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig3.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig4.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig5.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig6.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Do the jigsaw",
+					"picture" 		: "pig7.jpg",
+					"gridX"			: 4,
+					"gridY"			: 4
+				}
+			]
+		}
+	]	
+}
