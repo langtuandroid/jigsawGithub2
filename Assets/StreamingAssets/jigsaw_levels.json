@@ -605,6 +605,33 @@
 					"gridY"			: 4
 				}
 			]
+		},
+
+
+		{
+			"name"	: "Crosswords",
+			"subdirectory" : "crosswords",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Complete the crosswords",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Complete the crossword",
+					"picture" 		: "crossword1.jpg",
+					"gridX"			: 2,
+					"gridY"			: 4
+				},
+				{
+					"questionText" 	: "Complete the crossword",
+					"picture" 		: "crossword2.jpg",
+					"gridX"			: 2,
+					"gridY"			: 4
+				}
+			]
 		}
 	]	
 }

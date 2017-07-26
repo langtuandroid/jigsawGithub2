@@ -596,6 +596,27 @@
 					"gridY"			: 4
 				}
 			]
+		},
+
+
+		{
+			"name"	: "Crosswords",
+			"subdirectory" : "crosswords",
+			"mode" : "jigsaw",
+			"prescreen" :
+			{
+				"questionText" 	: "Do the jigsaw",
+				"picture" 		: "jigsawpiece.jpg"			
+			},
+			"questions" :
+			[
+				{
+					"questionText" 	: "Complete the crossword",
+					"picture" 		: "crossword1.jpg",
+					"gridX"			: 3,
+					"gridY"			: 3
+				}
+			]
 		}
 	]	
 }
