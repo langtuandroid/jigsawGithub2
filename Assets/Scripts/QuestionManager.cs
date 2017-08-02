@@ -358,7 +358,12 @@ namespace UnityStandardAssets._2D
 		public void SetQuiz(string quizName)
 		{
 			_selectedLevel = quizName;
-			int quizIndex = 0;
+			SetQuiz (QuizIndex(quizName));
+		}
+
+		public int QuizIndex(string quizName)
+		{
+			int quizIndex = -1;
 
 			// find the quiz name
 			for (int i=0; i<_numberOfQuizzes; i++)
@@ -370,9 +375,14 @@ namespace UnityStandardAssets._2D
 					quizIndex = i;
 					break;
 				}
-			}
+			}	
 
-			SetQuiz (quizIndex);
+			return quizIndex;
+		}
+
+		public bool QuizExists(string quizName)
+		{
+			return (QuizIndex(quizName) >= 0);
 		}
 
 		
