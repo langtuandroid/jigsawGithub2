@@ -18,16 +18,34 @@ namespace UnityStandardAssets._2D
 		{
 			public string[] m_quizNames;
 			public SingleQuizState[] m_playerProgress;		
-			//public int[] m_experiment;		// delete me
-			//public ExperimentClass[] m_experiment2;
-			//public int test;
-			//public ExperimentClass m_experiment3;
-			public int[][] m_test2;
-
 		}
 
 		private QuestionManager m_questionManager;
 		SingleQuizState[] m_playerProgress;
+
+
+
+
+		public static PlayerProgress GetPlayerProgress()
+		{
+			// tries to find in the scene
+			// if not, then create one and initialise it.
+			GameObject playerProgressObject = GameObject.Find ("PlayerProgressPrefab(Clone)");
+			if (playerProgressObject)
+			{
+				// return the existing one
+				return playerProgressObject.GetComponent<PlayerProgress>();
+			}
+			else
+			{
+				// create a new one
+				playerProgressObject = Instantiate(Resources.Load("PlayerProgressPrefab")) as GameObject;
+				PlayerProgress playerProgress = playerProgressObject.GetComponent<PlayerProgress>();
+				DontDestroyOnLoad(playerProgress.gameObject);	// make it persist between scenes
+				return playerProgress;
+			}
+		}
+
 
 		// Use this for initialization
 		void Start () {
@@ -101,14 +119,6 @@ namespace UnityStandardAssets._2D
 			SaveClass saveClass = new SaveClass();
 			saveClass.m_playerProgress = m_playerProgress;
 			saveClass.m_quizNames = m_questionManager.AllQuizNamesInCurrentMode();
-//			saveClass.m_experiment = new int[10];
-//			saveClass.m_experiment2 = new ExperimentClass[10];
-//			saveClass.m_experiment3 = new ExperimentClass();
-
-			saveClass.m_test2 = new int[3][];
-			saveClass.m_test2[0] = new int[5];
-			saveClass.m_test2[1] = new int[5];
-			saveClass.m_test2[2] = new int[5];
 
 			string json = JsonUtility.ToJson (saveClass);
 			string path = Application.persistentDataPath + "/jigsawSaveFile.json";

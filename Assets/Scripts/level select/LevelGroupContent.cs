@@ -15,6 +15,7 @@ public class LevelGroupContent : MonoBehaviour {
 	QuestionManager m_questionManager;
 	int m_numberOfQuizzes;
 	int m_numberOfLevelsInGroup;
+	private PlayerProgress m_playerProgress;
 
 	// Use this for initialization
 	void Start () 
@@ -25,6 +26,8 @@ public class LevelGroupContent : MonoBehaviour {
 	public void Init()
 	{
 		m_questionManager = QuestionManager.GetQuestionManager();
+		m_playerProgress = PlayerProgress.GetPlayerProgress();
+
 		m_questionManager.SetSelectedQuizType(QuestionManager.QuizTypes.Jigsaw);
 		m_numberOfQuizzes = m_questionManager.GetNumberOfQuizzes();
 		//FillWithQuizzesAndQuestions();
