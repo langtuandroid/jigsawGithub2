@@ -87,8 +87,9 @@ namespace UnityStandardAssets._2D
 
 			// AGTEMP: test
 			CompleteNQuestions(m_playerProgress[0],50);
-			CompleteNQuestions(m_playerProgress[1],5);
-			CompleteNQuestions(m_playerProgress[2],1);
+			CompleteNQuestions(m_playerProgress[1],50);
+			CompleteNQuestions(m_playerProgress[2],50);
+			CompleteNQuestions(m_playerProgress[3],4);
 			WriteStateToJSONFile();
 		}
 
@@ -106,6 +107,12 @@ namespace UnityStandardAssets._2D
 					quizState.m_questions[i] = 0;
 				}
 			}
+		}
+
+		public void SetQuestionState(int quizNumber, int questionNumber, bool state)
+		{
+			SingleQuizState quizState = m_playerProgress[quizNumber];
+			quizState.m_questions[questionNumber] = state ? 1 : 0;
 		}
 
 

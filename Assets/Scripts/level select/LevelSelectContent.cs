@@ -70,6 +70,7 @@ public class LevelSelectContent : MonoBehaviour {
 			levelButton.Init(number++, lbd.m_levelNum, lbd.m_name, lbd.m_callback, lbd.m_isButtonActive);
 			if (!lbd.m_isLevel)
 			{
+				// this is a button for a question - show it as either completed or not
 				if (lbd.m_completionScore > 0)
 				{
 					levelButton.HideCompletionCount(false);				
@@ -82,6 +83,7 @@ public class LevelSelectContent : MonoBehaviour {
 			}
 			else
 			{
+				// this is a button for a quiz. Show the number of questions completed.
 				levelButton.SetCompletedCount(lbd.m_completionScore, lbd.m_maxCompletion);
 			}
 		}

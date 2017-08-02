@@ -16,6 +16,7 @@ public class LevelGroupContent : MonoBehaviour {
 	int m_numberOfQuizzes;
 	int m_numberOfLevelsInGroup;
 	private PlayerProgress m_playerProgress;
+	private int m_currentlySelectedQuiz;
 
 	// Use this for initialization
 	void Start () 
@@ -58,15 +59,19 @@ public class LevelGroupContent : MonoBehaviour {
 //		}
 //	}
 		
-	public void PressedQuestionButton(int levelNumber)
+	public void PressedQuestionButton(int buttonNumber)
 	{
-		Debug.Log("PressedQuestionButton "+levelNumber);
+		Debug.Log("PressedQuestionButton "+buttonNumber);
+		m_playerProgress.SetQuestionState(m_currentlySelectedQuiz, buttonNumber, true);
+		FillTheQuestionSelectContent(m_currentlySelectedQuiz);
+		FillWithGroupsAndQuizzes();
 	}
 
-	public void PressedLevelButton(int levelNumber)
+	public void PressedLevelButton(int buttonNumber)
 	{
-		Debug.Log("PressedLevelButton "+levelNumber);
-		FillTheQuestionSelectContent(levelNumber);
+		Debug.Log("PressedLevelButton "+buttonNumber);
+		m_currentlySelectedQuiz = buttonNumber;
+		FillTheQuestionSelectContent(buttonNumber);
 		LevelSelectController.Instance.TransitToQuestionView();
 	}
 
@@ -90,10 +95,31 @@ public class LevelGroupContent : MonoBehaviour {
 		m_levelSelectContent.Init(levelData);
 	}
 
+	bool GroupIsClear(string groupName)
+	{
+		int incompleteQuestionsCount = 0;
+		for(int i=0; i<m_numberOfQuizzes; i++)
+		{
+			m_questionManager.SetQuiz(i);
+			if (string.Compare(m_questionManager.GetGroupName(),groupName) == 0)
+			{
+				// this quiz is in the specified group
+				int score = m_playerProgress.QuizScore(i);
+				int outOf = m_questionManager.GetNumberOfQuestions();
+				int remainingQuestions = outOf - score;
+				incompleteQuestionsCount += remainingQuestions;
+			}
+		}
+
+		return (incompleteQuestionsCount == 0);
+	}
+
 	void FillWithGroupsAndQuizzes()
 	{
+		ClearExistingGroups();
 		List<string> groupNames = GetGroupNames();
 		int groupCount = 0;
+		bool allClearSoFar = true;
 		foreach(string groupName in groupNames)
 		{
 			// create a group for the UI
@@ -103,7 +129,9 @@ public class LevelGroupContent : MonoBehaviour {
 
 			levelSelectContent.SetHeaderText(groupName);
 
-			bool groupIsActive = (groupCount <= 0);
+			// group 0 is always active. Others are active if all previous groups have been cleared.
+			bool groupIsActive = allClearSoFar;
+			allClearSoFar = allClearSoFar && GroupIsClear(groupName);
 
 			for(int i=0; i<m_numberOfQuizzes; i++)
 			{
@@ -124,6 +152,16 @@ public class LevelGroupContent : MonoBehaviour {
 			}
 
 			groupCount++;
+		}
+	}
+
+	void ClearExistingGroups()
+	{
+		LevelSelectContent[] groups = transform.GetComponentsInChildren<LevelSelectContent>();
+		foreach(LevelSelectContent b in groups)
+		{
+			b.transform.SetParent(null);
+			Destroy(b.gameObject);
 		}
 	}
 
