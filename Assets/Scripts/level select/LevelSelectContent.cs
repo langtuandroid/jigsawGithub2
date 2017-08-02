@@ -12,6 +12,8 @@ public class LevelSelectButtonData
 	public bool m_isLevel;
 	public bool m_isButtonActive;
 	public LevelButtonCallback m_callback;
+	public int m_completionScore;
+	public int m_maxCompletion;
 
 	public LevelSelectButtonData(int levelNum, LevelButtonCallback callback, bool isLevel, string name = "", bool isButtonActive = true)
 	{
@@ -20,6 +22,12 @@ public class LevelSelectButtonData
 		m_callback = callback;
 		m_isLevel = isLevel;
 		m_isButtonActive = isButtonActive;
+	}
+
+	public void SetCompletion(int score, int outOf)
+	{
+		m_completionScore = score;
+		m_maxCompletion = outOf;
 	}
 }
 
@@ -62,11 +70,19 @@ public class LevelSelectContent : MonoBehaviour {
 			levelButton.Init(number++, lbd.m_levelNum, lbd.m_name, lbd.m_callback, lbd.m_isButtonActive);
 			if (!lbd.m_isLevel)
 			{
-				levelButton.HideCompletionCount(true);
+				if (lbd.m_completionScore > 0)
+				{
+					levelButton.HideCompletionCount(false);				
+					levelButton.SetCompletedCount(1, 1);
+				}
+				else
+				{
+					levelButton.HideCompletionCount(true);
+				}
 			}
 			else
 			{
-				levelButton.SetCompletedCount(Random.Range(3,6),5);
+				levelButton.SetCompletedCount(lbd.m_completionScore, lbd.m_maxCompletion);
 			}
 		}
 	}

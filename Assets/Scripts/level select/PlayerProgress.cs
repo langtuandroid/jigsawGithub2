@@ -24,7 +24,34 @@ namespace UnityStandardAssets._2D
 		SingleQuizState[] m_playerProgress;
 
 
+		public int QuizScore(int quizNum)
+		{
+			Debug.Log("QuizScore "+quizNum);
+			SingleQuizState quizState = m_playerProgress[quizNum];
+			int tally = 0;
 
+			int count = quizState.m_questions.Length;
+			for(int i=0; i<count; i++)
+			{
+				if (quizState.m_questions[i] > 0)
+				{
+					tally++;
+				}
+			}
+
+			return tally;
+		}
+
+		public int QuestionScore(int quizNum, int questionNum)
+		{
+			SingleQuizState quizState = m_playerProgress[quizNum];
+			int count = quizState.m_questions.Length;
+			if (questionNum < count)
+			{
+				return quizState.m_questions[questionNum];
+			}
+			return -1;
+		}
 
 		public static PlayerProgress GetPlayerProgress()
 		{
@@ -42,6 +69,7 @@ namespace UnityStandardAssets._2D
 				playerProgressObject = Instantiate(Resources.Load("PlayerProgressPrefab")) as GameObject;
 				PlayerProgress playerProgress = playerProgressObject.GetComponent<PlayerProgress>();
 				DontDestroyOnLoad(playerProgress.gameObject);	// make it persist between scenes
+				playerProgress.Init();
 				return playerProgress;
 			}
 		}
@@ -49,11 +77,35 @@ namespace UnityStandardAssets._2D
 
 		// Use this for initialization
 		void Start () {
+
+		}
+
+		public void Init()
+		{
 			m_questionManager = QuestionManager.GetQuestionManager();
 			BuildEmptyStateStructure();
 
 			// AGTEMP: test
+			CompleteNQuestions(m_playerProgress[0],50);
+			CompleteNQuestions(m_playerProgress[1],5);
+			CompleteNQuestions(m_playerProgress[2],1);
 			WriteStateToJSONFile();
+		}
+
+		void CompleteNQuestions(SingleQuizState quizState, int numQuestions)
+		{
+			int count = quizState.m_questions.Length;
+			for(int i=0; i<count; i++)
+			{
+				if (i < numQuestions)
+				{
+					quizState.m_questions[i] = 1;
+				}
+				else
+				{
+					quizState.m_questions[i] = 0;
+				}
+			}
 		}
 
 
@@ -76,6 +128,9 @@ namespace UnityStandardAssets._2D
 		// read the file and copy the data into the pre-constructed state structure, trimming or padding it out if necessary. This allows for the number of questions to change.
 		void ReadJSONFileIntoStateStructure()
 		{
+			// build an empty game state structure, with the right number of quizzes and questions for the current data in QuestionManager.
+			BuildEmptyStateStructure();
+
 			string path = Application.persistentDataPath + "/jigsawSaveFile.json";
 			if (System.IO.File.Exists(path))
 			{
@@ -86,9 +141,6 @@ namespace UnityStandardAssets._2D
 				{
 					// read in the saved state of the game. This may have different quizzes, and different numbers of questions in the quizzes.
 					SaveClass saveClass = JsonUtility.FromJson<SaveClass> (json);
-
-					// build an empty game state structure, with the right number of quizzes and questions for the current data in QuestionManager.
-					BuildEmptyStateStructure();
 
 					// copy saveClass.m_playerProgress, item by item into m_playerProgress, trimming or padding it out if necessary
 					for (int i=0; i<saveClass.m_quizNames.Length; i++)

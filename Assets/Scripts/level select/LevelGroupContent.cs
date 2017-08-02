@@ -81,7 +81,10 @@ public class LevelGroupContent : MonoBehaviour {
 		{
 			Debug.Log("question number "+j);
 			Question q = m_questionManager.GetQuestion(j);
-			levelData.Add(new LevelSelectButtonData(j, PressedQuestionButton, false, q.pictureFileName));
+			LevelSelectButtonData datum = new LevelSelectButtonData(j, PressedQuestionButton, false, q.pictureFileName);
+			int score = m_playerProgress.QuestionScore(levelNumber,j);
+			datum.SetCompletion(score, 1);
+			levelData.Add(datum);
 		}
 
 		m_levelSelectContent.Init(levelData);
@@ -107,7 +110,10 @@ public class LevelGroupContent : MonoBehaviour {
 				m_questionManager.SetQuiz(i);
 				if (string.Compare(m_questionManager.GetGroupName(),groupName) == 0)
 				{
-					levelData.Add(new LevelSelectButtonData(i, PressedLevelButton, true, m_questionManager.GetQuizName(), groupIsActive));
+					LevelSelectButtonData datum = new LevelSelectButtonData(i, PressedLevelButton, true, m_questionManager.GetQuizName(), groupIsActive);
+					int score = m_playerProgress.QuizScore(i);
+					datum.SetCompletion(score,m_questionManager.GetNumberOfQuestions());
+					levelData.Add(datum);
 				}
 			}	
 			levelSelectContent.Init(levelData);
