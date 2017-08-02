@@ -85,12 +85,7 @@ namespace UnityStandardAssets._2D
 			m_questionManager = QuestionManager.GetQuestionManager();
 			BuildEmptyStateStructure();
 
-			// AGTEMP: test
-			CompleteNQuestions(m_playerProgress[0],50);
-			CompleteNQuestions(m_playerProgress[1],50);
-			CompleteNQuestions(m_playerProgress[2],50);
-			CompleteNQuestions(m_playerProgress[3],4);
-			WriteStateToJSONFile();
+			ReadJSONFileIntoStateStructure();
 		}
 
 		void CompleteNQuestions(SingleQuizState quizState, int numQuestions)
@@ -113,6 +108,7 @@ namespace UnityStandardAssets._2D
 		{
 			SingleQuizState quizState = m_playerProgress[quizNumber];
 			quizState.m_questions[questionNumber] = state ? 1 : 0;
+			WriteStateToJSONFile();
 		}
 
 
@@ -161,7 +157,7 @@ namespace UnityStandardAssets._2D
 							int savedQuestionCount = saveClass.m_playerProgress[i].m_questions.Length;
 
 							// copy across the state of the questions. 
-							// If there are less questions in the saved data than in the local structure, then there will leave the last few questions untouched.
+							// If there are less questions in the saved data than in the local structure, then it will leave the state of last few questions untouched.
 							// If there are more questions in the saved data then it will leave off the last few questions from the saved data.
 							for (int j=0; (j<questionCount) && (j<savedQuestionCount); j++)
 							{
@@ -173,7 +169,7 @@ namespace UnityStandardAssets._2D
 			}
 		}
 
-		void WriteStateToJSONFile()
+		public void WriteStateToJSONFile()
 		{
 			SaveClass saveClass = new SaveClass();
 			saveClass.m_playerProgress = m_playerProgress;
