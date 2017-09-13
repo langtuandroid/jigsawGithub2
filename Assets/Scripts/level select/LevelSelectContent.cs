@@ -105,16 +105,22 @@ public class LevelSelectContent : MonoBehaviour {
 	}
 
 
-	public void SetContentAlpha(float alpha)
+	public void SetContentAlpha(float alpha, int numberOfButtons = 0)
 	{
-		Color c = m_sectionHeader.color;
-		c.a = alpha;
-		m_sectionHeader.color = c;
+        if (m_sectionHeader != null)
+        {
+            Color c = m_sectionHeader.color;
+            c.a = alpha;
+            m_sectionHeader.color = c;
+        }
 
+        int count = 0;
 		LevelButton[] buttons = transform.GetComponentsInChildren<LevelButton>();
 		foreach(LevelButton b in buttons)
 		{
-			b.SetContentAlpha(alpha);
+            b.SetContentAlpha((count < numberOfButtons) ? 1f : alpha);
+
+            count++;
 		}
 	}
 }

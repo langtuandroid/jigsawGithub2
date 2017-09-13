@@ -12,7 +12,9 @@ public class LevelGroupContent : MonoBehaviour {
 	[SerializeField] 
 	LevelSelectContent m_levelSelectContent;
 
-	QuestionManager m_questionManager;
+    const bool MUST_COMPLETE_QUESTIONS_WITHIN_QUIZ_IN_SEQUENCE = true;
+
+    QuestionManager m_questionManager;
 	int m_numberOfQuizzes;
 	int m_numberOfLevelsInGroup;
 	private PlayerProgress m_playerProgress;
@@ -81,19 +83,28 @@ public class LevelGroupContent : MonoBehaviour {
 		m_numberOfLevelsInGroup = m_questionManager.GetNumberOfQuestions();
 		Debug.Log("m_numberOfLevelsInGroup = "+m_numberOfLevelsInGroup);
 
+        bool active = true;
+        int activeCount = m_numberOfLevelsInGroup;
 		List<LevelSelectButtonData> levelData = new List<LevelSelectButtonData>();
 		for(int j=0; j<m_numberOfLevelsInGroup; j++)
 		{
 			Debug.Log("question number "+j);
 			Question q = m_questionManager.GetQuestion(j);
-			LevelSelectButtonData datum = new LevelSelectButtonData(j, PressedQuestionButton, false, q.pictureFileName);
-			int score = m_playerProgress.QuestionScore(levelNumber,j);
+            int score = m_playerProgress.QuestionScore(levelNumber, j);
+            LevelSelectButtonData datum = new LevelSelectButtonData(j, PressedQuestionButton, false, q.pictureFileName, active);
 			datum.SetCompletion(score, 1);
+            if (MUST_COMPLETE_QUESTIONS_WITHIN_QUIZ_IN_SEQUENCE && (score == 0) && active)
+            {
+                activeCount = j + 1;
+                active = false;
+            }
 			levelData.Add(datum);
 		}
 
 		m_levelSelectContent.Init(levelData);
-	}
+
+        m_levelSelectContent.SetContentAlpha(0.3f, activeCount);
+    }
 
 	bool GroupIsClear(string groupName)
 	{
