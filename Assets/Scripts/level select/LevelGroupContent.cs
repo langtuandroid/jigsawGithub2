@@ -155,11 +155,12 @@ public class LevelGroupContent : MonoBehaviour {
 				{
 					LevelSelectButtonData datum = new LevelSelectButtonData(i, PressedLevelButton, true, m_questionManager.GetQuizName(), groupIsActive && (quizIsActive || !MUST_COMPLETE_QUIZZES_IN_SEQUENCE));
 					int score = m_playerProgress.QuizScore(i);
-					datum.SetCompletion(score,m_questionManager.GetNumberOfQuestions());
+                    int maxScore = m_playerProgress.QuizNumQuestions(i);
+                    datum.SetCompletion(score,m_questionManager.GetNumberOfQuestions());
                     quizCount++;
-                    if (MUST_COMPLETE_QUIZZES_IN_SEQUENCE && (score == 0) && quizIsActive)
+                    if (MUST_COMPLETE_QUIZZES_IN_SEQUENCE && (score < maxScore) && quizIsActive)
                     {
-                        // found the first non=active quiz. All quizzes up to and including this one are selectable, others are not.
+                        // found the first non-active quiz. All quizzes up to and including this one are selectable, others are not.
                         numberOfSelectableQuizzes = quizCount;
                         quizIsActive = false;
                     }
