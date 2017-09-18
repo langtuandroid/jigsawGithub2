@@ -13,6 +13,7 @@ public class LevelGroupContent : MonoBehaviour {
 	LevelSelectContent m_levelSelectContent;
 
     const bool MUST_COMPLETE_QUESTIONS_WITHIN_QUIZ_IN_SEQUENCE = true;
+    const bool MUST_COMPLETE_QUIZZES_IN_SEQUENCE = true;
 
     QuestionManager m_questionManager;
 	int m_numberOfQuizzes;
@@ -130,7 +131,7 @@ public class LevelGroupContent : MonoBehaviour {
 		ClearExistingGroups();
 		List<string> groupNames = GetGroupNames();
 		int groupCount = 0;
-		bool allClearSoFar = true;
+		bool allGroupsClearSoFar = true;
 		foreach(string groupName in groupNames)
 		{
 			// create a group for the UI
@@ -141,26 +142,45 @@ public class LevelGroupContent : MonoBehaviour {
 			levelSelectContent.SetHeaderText(groupName);
 
 			// group 0 is always active. Others are active if all previous groups have been cleared.
-			bool groupIsActive = allClearSoFar;
-			allClearSoFar = allClearSoFar && GroupIsClear(groupName);
+			bool groupIsActive = allGroupsClearSoFar;
+			allGroupsClearSoFar = allGroupsClearSoFar && GroupIsClear(groupName);
 
-			for(int i=0; i<m_numberOfQuizzes; i++)
+            bool quizIsActive = true;
+            int numberOfSelectableQuizzes = 0;
+            int quizCount = 0;
+            for (int i=0; i<m_numberOfQuizzes; i++)
 			{
 				m_questionManager.SetQuiz(i);
 				if (string.Compare(m_questionManager.GetGroupName(),groupName) == 0)
 				{
-					LevelSelectButtonData datum = new LevelSelectButtonData(i, PressedLevelButton, true, m_questionManager.GetQuizName(), groupIsActive);
+					LevelSelectButtonData datum = new LevelSelectButtonData(i, PressedLevelButton, true, m_questionManager.GetQuizName(), groupIsActive && (quizIsActive || !MUST_COMPLETE_QUIZZES_IN_SEQUENCE));
 					int score = m_playerProgress.QuizScore(i);
 					datum.SetCompletion(score,m_questionManager.GetNumberOfQuestions());
-					levelData.Add(datum);
+                    quizCount++;
+                    if (MUST_COMPLETE_QUIZZES_IN_SEQUENCE && (score == 0) && quizIsActive)
+                    {
+                        // found the first non=active quiz. All quizzes up to and including this one are selectable, others are not.
+                        numberOfSelectableQuizzes = quizCount;
+                        quizIsActive = false;
+                    }
+                    levelData.Add(datum);
 				}
-			}	
+			}
+            if (numberOfSelectableQuizzes == 0)
+            {
+                // didn't find a non-active quiz. They are all selectable.
+                numberOfSelectableQuizzes = quizCount;
+            }
 			levelSelectContent.Init(levelData);
 
-			if(!groupIsActive)
-			{
-				levelSelectContent.SetContentAlpha(0.3f);
-			}
+            Debug.Log("groupIsActive " + groupIsActive + ", activeQuizCount " + numberOfSelectableQuizzes);
+
+            if (!groupIsActive)
+            {
+                numberOfSelectableQuizzes = 0;
+            }
+
+			levelSelectContent.SetContentAlpha(0.3f, numberOfSelectableQuizzes);
 
 			groupCount++;
 		}
