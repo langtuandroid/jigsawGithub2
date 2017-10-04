@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityStandardAssets._2D;
 
 public class LevelSelectController : MonoBehaviour 
 {
@@ -13,7 +13,11 @@ public class LevelSelectController : MonoBehaviour
 	[SerializeField] 
 	GameObject m_questionScrollView;
 
-	int m_screenWidth;
+    private QuestionManager m_questionManager;
+    private AudioManager m_audioManager;
+    private SettingsManager m_settingsManager;
+
+    int m_screenWidth;
 	Vector2 m_initialScrollViewPos;
 
 	static LevelSelectController m_instance;
@@ -36,7 +40,12 @@ public class LevelSelectController : MonoBehaviour
 
 	void Start()
 	{
-		m_initialScrollViewPos = m_groupScrollView.transform.localPosition;
+        m_questionManager = QuestionManager.GetQuestionManager();
+        m_audioManager = AudioManager.GetAudioManager();
+        m_settingsManager = SettingsManager.GetSettingsManager();
+        m_settingsManager.ResetSettings();
+
+        m_initialScrollViewPos = m_groupScrollView.transform.localPosition;
 		m_screenWidth = Screen.width;
 		m_questionScrollView.transform.localPosition = new Vector2(m_screenWidth, m_initialScrollViewPos.y);
 		m_levelGroupContent.Init();

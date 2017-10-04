@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets._2D;
+using UnityEngine.SceneManagement;
 
 public class LevelGroupContent : MonoBehaviour {
 
@@ -68,9 +69,14 @@ public class LevelGroupContent : MonoBehaviour {
 		m_playerProgress.SetQuestionState(m_currentlySelectedQuiz, buttonNumber, true);
 		FillTheQuestionSelectContent(m_currentlySelectedQuiz);
 		FillWithGroupsAndQuizzes();
-	}
 
-	public void PressedLevelButton(int buttonNumber)
+        QuestionManager qm = QuestionManager.GetQuestionManager();
+        qm.SetQuiz(m_currentlySelectedQuiz);
+        string sceneName = qm.GetQuizSceneNameForCurrentMode();
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void PressedLevelButton(int buttonNumber)
 	{
 		Debug.Log("PressedLevelButton "+buttonNumber);
 		m_currentlySelectedQuiz = buttonNumber;
