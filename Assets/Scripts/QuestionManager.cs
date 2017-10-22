@@ -39,8 +39,10 @@ namespace UnityStandardAssets._2D
 		private int _numberOfQuizzes;
 		private string _selectedLevel;
 		private QuizTypes _selectedQuizType;
+        private int _firstQuestion = 0;
+        private int _currentQuizNumber = 0;
 
-		public enum QuizTypes 
+        public enum QuizTypes 
 		{
 			quizType1,
 			quizType2,
@@ -349,19 +351,33 @@ namespace UnityStandardAssets._2D
 			return ps;
 		}
 
-		public void SetQuiz(int quizIndex)
+        public void SetQuiz(int quizIndex, int firstQuestion = 0)
 		{
 			_questions = _quizzes["quizzes"][quizIndex];
 			_numberOfQuestions = _questions["questions"].Count;
-		}
+            _firstQuestion = firstQuestion;
+            _currentQuizNumber = quizIndex;
+        }
 
-		public void SetQuiz(string quizName)
+        public void SetQuiz(string quizName)
 		{
 			_selectedLevel = quizName;
 			SetQuiz (QuizIndex(quizName));
 		}
 
-		public int QuizIndex(string quizName)
+        public int GetFirstQuestionNum()
+        {
+            Debug.Log("GetFirstQuestionNum = "+ _firstQuestion);
+            return _firstQuestion;
+        }
+
+        public int GetQuizNum()
+        {
+            Debug.Log("GetQuizNum = " + _firstQuestion);
+            return _currentQuizNumber;
+        }
+
+        public int QuizIndex(string quizName)
 		{
 			int quizIndex = -1;
 

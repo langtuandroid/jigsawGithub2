@@ -141,7 +141,8 @@ namespace UnityStandardAssets._2D
 			BuildEmptyStateStructure();
 
 			string path = Application.persistentDataPath + "/jigsawSaveFile.json";
-			if (System.IO.File.Exists(path))
+            Debug.Log("ReadJSONFileIntoStateStructure : " + path);
+            if (System.IO.File.Exists(path))
 			{
 				StreamReader reader = new StreamReader (path);
 				string json = reader.ReadToEnd ();
@@ -184,7 +185,7 @@ namespace UnityStandardAssets._2D
 			string json = JsonUtility.ToJson (saveClass);
 			string path = Application.persistentDataPath + "/jigsawSaveFile.json";
 			StreamWriter writer = new StreamWriter (path, false);
-			Debug.Log("SaveProgressToFile 3");
+			Debug.Log("SaveProgressToFile : "+ path);
 
 			writer.WriteLine (json);
 			writer.Close ();

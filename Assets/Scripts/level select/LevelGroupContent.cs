@@ -65,13 +65,13 @@ public class LevelGroupContent : MonoBehaviour {
 		
 	public void PressedQuestionButton(int buttonNumber)
 	{
-		Debug.Log("PressedQuestionButton "+buttonNumber);
-		m_playerProgress.SetQuestionState(m_currentlySelectedQuiz, buttonNumber, true);
+		Debug.Log("PressedQuestionButton 2 "+buttonNumber);
+		//m_playerProgress.SetQuestionState(m_currentlySelectedQuiz, buttonNumber, true);
 		FillTheQuestionSelectContent(m_currentlySelectedQuiz);
 		FillWithGroupsAndQuizzes();
 
         QuestionManager qm = QuestionManager.GetQuestionManager();
-        qm.SetQuiz(m_currentlySelectedQuiz);
+        qm.SetQuiz(m_currentlySelectedQuiz, buttonNumber);
         string sceneName = qm.GetQuizSceneNameForCurrentMode();
         SceneManager.LoadScene(sceneName);
     }

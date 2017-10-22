@@ -225,8 +225,8 @@ namespace UnityStandardAssets._2D
 			_settingsManager.ResetSettings();
 			_questionManager.AdjustSettings(gameplaySettings);
 
-			if (gameplaySettings.randomiseQuestions)
-				_questionManager.RandomiseQuestions();
+//			if (gameplaySettings.randomiseQuestions)
+//				_questionManager.RandomiseQuestions();
 			gameplayPanel.SetActive(true);
 			preScreenPanel.SetActive(false);
 			gameOverPanel.SetActive(false);
@@ -234,7 +234,7 @@ namespace UnityStandardAssets._2D
 
 			_score = 0;
 			_bonusScore = 1;
-			_currentQuestionNumber = 0;
+			_currentQuestionNumber = _questionManager.GetFirstQuestionNum();
 			_timerTime = gameplaySettings.timerMaximumTime;
 			_questionCount = 0;
 			_correctAnswersCount = 0;
@@ -338,7 +338,7 @@ namespace UnityStandardAssets._2D
 		{
 			if (_audioManager)
 				_audioManager.PlayAudioClip("pressedBack");
-			Application.LoadLevel("levelSelect");
+			Application.LoadLevel("jigsaw level select");
 		}
 
 		private void ShowNextQuestion()
@@ -597,15 +597,19 @@ namespace UnityStandardAssets._2D
 
 			if (correct)
 			{
-				if ((gameplaySettings.bonusForTimeLeft > 0.0f) && gameplaySettings.timerUsed)
+                Debug.Log("COREECT!!");
+                PlayerProgress playerProgress = PlayerProgress.GetPlayerProgress();
+                playerProgress.SetQuestionState(_questionManager.GetQuizNum(), _currentQuestionNumber, true);
+
+                if ((gameplaySettings.bonusForTimeLeft > 0.0f) && gameplaySettings.timerUsed)
 					StartCoroutine(RightAnswerSequenceTimeBonus());
 				else
 					StartCoroutine(RightAnswerSequence());
 
 				_correctAnswersCount++;
 
-				//ZoomIntoHotSpot();
-			}
+                //ZoomIntoHotSpot();
+            }
 			else
 			{
 				StartCoroutine(WrongAnswerSequence(false));
