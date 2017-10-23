@@ -1037,14 +1037,17 @@ namespace UnityStandardAssets._2D
 
 		private void AllQuestionsFinished()
 		{
-			if (_audioManager)
-				_audioManager.PlayAudioClip("allQuestionsComplete");
-			gameplayPanel.SetActive(false);
-			levelCompletePanel.SetActive(true);
-			Visibility visibilityComponent = wellDoneText.GetComponent<Visibility>();
-			if (visibilityComponent != null)
-				visibilityComponent.Flash(1000,0.5f,0.5f,true);
-			numCorrectAnswersTextUI.text = _correctAnswersCount+" out of "+_questionManager.GetNumberOfQuestions();
+			//if (_audioManager)
+			//	_audioManager.PlayAudioClip("allQuestionsComplete");
+
+            Application.LoadLevel("jigsaw level select");
+
+            //gameplayPanel.SetActive(false);
+			//levelCompletePanel.SetActive(true);
+			//Visibility visibilityComponent = wellDoneText.GetComponent<Visibility>();
+			//if (visibilityComponent != null)
+			//	visibilityComponent.Flash(1000,0.5f,0.5f,true);
+			//numCorrectAnswersTextUI.text = _correctAnswersCount+" out of "+_questionManager.GetNumberOfQuestions();
 		}
 		
 		

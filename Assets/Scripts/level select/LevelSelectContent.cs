@@ -18,7 +18,7 @@ public class LevelSelectButtonData
 	public LevelSelectButtonData(int levelNum, LevelButtonCallback callback, bool isLevel, string name = "", bool isButtonActive = true)
 	{
 		m_levelNum = levelNum;
-		m_name = name;
+        m_name = name;
 		m_callback = callback;
 		m_isLevel = isLevel;
 		m_isButtonActive = isButtonActive;
@@ -85,8 +85,14 @@ public class LevelSelectContent : MonoBehaviour {
 			{
 				// this is a button for a quiz. Show the number of questions completed.
 				levelButton.SetCompletedCount(lbd.m_completionScore, lbd.m_maxCompletion);
-			}
-		}
+                if (lbd.m_completionScore == 0 && lbd.m_isButtonActive)
+                {
+                    // we've only just unlocked it. Flash it.
+                    UnityStandardAssets._2D.Visibility vis = button.GetComponentInChildren<UnityStandardAssets._2D.Visibility>(true);
+                    vis.Flash(5, 0.1f, 0.1f, true);
+                }
+            }
+        }
 	}
 
 	void ClearExistingButtons()
