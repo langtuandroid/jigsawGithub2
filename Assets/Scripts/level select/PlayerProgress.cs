@@ -24,6 +24,16 @@ namespace UnityStandardAssets._2D
 		SingleQuizState[] m_playerProgress;
 
 
+        public int TotalPlayerScore()
+        {
+            int count = 0;
+            for(int quizNum = 0; quizNum < m_playerProgress.Length; quizNum++)
+            {
+                count += QuizScore(quizNum);
+            }
+            return count;
+        }
+
         public int QuizNumQuestions(int quizNum)
         {
             SingleQuizState quizState = m_playerProgress[quizNum];
