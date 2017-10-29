@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets._2D;
+using UnityEngine.SceneManagement;
 
 public class LevelSelectController : MonoBehaviour 
 {
@@ -19,6 +20,7 @@ public class LevelSelectController : MonoBehaviour
 
     int m_screenWidth;
 	Vector2 m_initialScrollViewPos;
+    bool m_showingGroupView = false;
 
 	static LevelSelectController m_instance;
 
@@ -58,7 +60,8 @@ public class LevelSelectController : MonoBehaviour
 		m_questionScrollView.SetActive(true);
 		m_groupScrollView.GetComponent<UnityStandardAssets._2D.Movement>().MoveTo(new Vector2(0f, m_initialScrollViewPos.y),TRANSIT_TIME);
 		m_questionScrollView.GetComponent<UnityStandardAssets._2D.Movement>().MoveTo(new Vector2(m_screenWidth, m_initialScrollViewPos.y),TRANSIT_TIME);
-	}
+        m_showingGroupView = true;
+    }
 
 	public void TransitToQuestionView()
 	{
@@ -66,10 +69,18 @@ public class LevelSelectController : MonoBehaviour
 		m_questionScrollView.SetActive(true);
 		m_groupScrollView.GetComponent<UnityStandardAssets._2D.Movement>().MoveTo(new Vector2(-m_screenWidth, m_initialScrollViewPos.y),TRANSIT_TIME);
 		m_questionScrollView.GetComponent<UnityStandardAssets._2D.Movement>().MoveTo(new Vector2(0f, m_initialScrollViewPos.y),TRANSIT_TIME);
-	}
+        m_showingGroupView = false;
+    }
 
 	public void PressedBackButton()
 	{
-		TransitToGroupView();
+        if (m_showingGroupView)
+        {
+            SceneManager.LoadScene("jigsaw title screen");
+        }
+        else
+        {
+            TransitToGroupView();
+        }
 	}
 }
