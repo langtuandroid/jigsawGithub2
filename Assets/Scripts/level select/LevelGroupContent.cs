@@ -66,7 +66,6 @@ public class LevelGroupContent : MonoBehaviour {
 	public void PressedQuestionButton(int buttonNumber)
 	{
 		Debug.Log("PressedQuestionButton 2 "+buttonNumber);
-		//m_playerProgress.SetQuestionState(m_currentlySelectedQuiz, buttonNumber, true);
 		FillTheQuestionSelectContent(m_currentlySelectedQuiz);
 		FillWithGroupsAndQuizzes();
 
@@ -80,11 +79,11 @@ public class LevelGroupContent : MonoBehaviour {
 	{
 		Debug.Log("PressedLevelButton "+buttonNumber);
 		m_currentlySelectedQuiz = buttonNumber;
-		FillTheQuestionSelectContent(buttonNumber);
-		LevelSelectController.Instance.TransitToQuestionView();
+		int numberOfAnsweredQuestions = FillTheQuestionSelectContent(buttonNumber);
+		LevelSelectController.Instance.TransitToQuestionView(numberOfAnsweredQuestions);
 	}
 
-	public void FillTheQuestionSelectContent(int levelNumber)
+	public int FillTheQuestionSelectContent(int levelNumber)
 	{
 		m_questionManager.SetQuiz(levelNumber);
 		m_numberOfLevelsInGroup = m_questionManager.GetNumberOfQuestions();
@@ -111,6 +110,8 @@ public class LevelGroupContent : MonoBehaviour {
 		m_levelSelectContent.Init(levelData);
 
         m_levelSelectContent.SetContentAlpha(0.3f, activeCount);
+
+        return activeCount;
     }
 
 	bool GroupIsClear(string groupName)

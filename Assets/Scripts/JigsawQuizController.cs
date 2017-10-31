@@ -38,10 +38,11 @@ namespace UnityStandardAssets._2D
 		[SerializeField] public bool showQuestionAtEndOfMovie = false;
 		[SerializeField] public bool randomiseQuestions = true;
 		[SerializeField] public int gridX = 0;
-		[SerializeField] public int gridY = 0;
-	}
+        [SerializeField] public int gridY = 0;
+        [SerializeField] public bool showPreScreenBeforeQuiz = false;
+    }
 
-	public class JigsawQuizController : MonoBehaviour
+    public class JigsawQuizController : MonoBehaviour
     {
 		[SerializeField] private RawImage pictureImageUI;
 		[SerializeField] private RawImage pictureImage2UI;
@@ -257,7 +258,7 @@ namespace UnityStandardAssets._2D
 			bestPossibleBackPanel.gameObject.SendMessage("Hide");
 			scoreTextUI.text = _score.ToString();
 
-			if (_questionManager.IsPreScreen())
+			if (_questionManager.IsPreScreen() && gameplaySettings.showPreScreenBeforeQuiz)
 			{
 				ShowPreScreen();
 			}

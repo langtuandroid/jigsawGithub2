@@ -90,4 +90,9 @@ public class LevelButton : MonoBehaviour {
 		c.a = alpha;
 		m_levelIcon.GetComponent<Image>().color = c;
 	}
+
+    public string GetName()
+    {
+        return m_levelNameText.text;
+    }
 }

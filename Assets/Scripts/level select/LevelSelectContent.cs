@@ -38,9 +38,10 @@ public class LevelSelectContent : MonoBehaviour {
 	[SerializeField] 
 	Text m_sectionHeader;
 
+    LevelButton[] m_levelButtons;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
 	{
 //		//AGTEMP - just use this data for the init for now
 //		List<LevelSelectButtonData> testData = new List<LevelSelectButtonData>();
@@ -58,16 +59,43 @@ public class LevelSelectContent : MonoBehaviour {
 		
 	}
 
+    public Vector2 GetScrollPosForLevelButton(int n)
+    {
+        const int NUM_VISIBLE_BUTTONS = 5;
+
+        int centreOffset = (NUM_VISIBLE_BUTTONS + 1) / 2;
+
+        n = n - centreOffset;
+
+        if (n > (m_levelButtons.Length - centreOffset))
+        {
+            n = m_levelButtons.Length - centreOffset;
+        }
+        if (n < 0)
+        {
+            n = 0;
+        }
+
+        GameObject gOb = m_levelButtons[n].gameObject;
+        RectTransform rt = gOb.GetComponent<RectTransform>();
+        Vector2 size = rt.sizeDelta;
+
+        return new Vector2(0f, n * size.y);
+    }
+
 	public void Init(List<LevelSelectButtonData> buttonData)
 	{
 		ClearExistingButtons();
 
-		int number = 1;
+        m_levelButtons = new LevelButton[buttonData.Count];
+
+        int number = 1;
 		foreach(LevelSelectButtonData lbd in buttonData)
 		{
 			GameObject button = Instantiate(m_buttonPrefab, transform);
 			LevelButton levelButton = button.GetComponent<LevelButton>();
-			levelButton.Init(number++, lbd.m_levelNum, lbd.m_name, lbd.m_callback, lbd.m_isButtonActive);
+            m_levelButtons[number-1] = levelButton;
+            levelButton.Init(number++, lbd.m_levelNum, lbd.m_name, lbd.m_callback, lbd.m_isButtonActive);
 			if (!lbd.m_isLevel)
 			{
 				// this is a button for a question - show it as either completed or not
